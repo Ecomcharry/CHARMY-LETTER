@@ -47,7 +47,7 @@
       padding:20px;
     }
 
-    /* VÍDEO */
+    /* VÍDEO / IMAGEM */
 
     .bg-video,
     .iphone-image{
@@ -64,7 +64,7 @@
       z-index:0;
     }
 
-    /* IMAGEM IPHONE COMEÇA ESCONDIDA */
+    /* IMAGEM IPHONE ESCONDIDA */
 
     .iphone-image{
       display:none;
@@ -223,8 +223,9 @@
       }
 
       h1{
-        font-size:68px;
-        white-space:normal;
+        font-size:52px;
+
+        white-space:nowrap;
       }
 
       .subtitle{
@@ -239,6 +240,7 @@
       button{
         width:100%;
         max-width:220px;
+
         height:52px;
       }
 
@@ -320,7 +322,7 @@
 
   <script>
 
-    // DETECTA IPHONE / SAFARI
+    // DETECTA IPHONE
 
     const isiPhone = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
