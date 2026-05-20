@@ -135,12 +135,16 @@
 
       text-decoration:none;
 
+      border:none;
+
       border-radius:50px;
 
       font-size:13px;
       font-weight:600;
 
       letter-spacing:3px;
+
+      cursor:pointer;
 
       transition:0.3s;
     }
@@ -287,6 +291,8 @@
 
       <div class="buttons">
 
+        <!-- BOTÃO SITE -->
+
         <a 
           href="https://www.charry.com.br/collections/the-most-loved-edit"
           class="site-button"
@@ -297,18 +303,33 @@
 
         <!-- BOTÃO RECOMEÇAR -->
 
-        <a 
-          href="index.html"
+        <button 
           class="site-button restart-button"
+          onclick="restartExperience()"
         >
           ESCOLHER NOVAMENTE
-        </a>
+        </button>
 
       </div>
 
     </div>
 
   </section>
+
+  <script>
+
+    function restartExperience(){
+
+      // LIMPA TODOS OS DADOS SALVOS
+
+      localStorage.clear();
+
+      // VOLTA PARA A PRIMEIRA PÁGINA
+
+      window.location.href = "index.html";
+    }
+
+  </script>
 
 </body>
 
