@@ -23,17 +23,21 @@
       box-sizing:border-box;
     }
 
-    body{
+    html, body{
       width:100%;
-      height:100vh;
-      overflow:hidden;
+      min-height:100%;
       font-family:'Montserrat', sans-serif;
+      overflow-x:hidden;
+    }
+
+    body{
+      background:black;
     }
 
     /* HERO */
     .hero{
       width:100%;
-      height:100vh;
+      min-height:100vh;
       position:relative;
       overflow:hidden;
 
@@ -41,7 +45,7 @@
       align-items:center;
       justify-content:center;
 
-      padding:20px;
+      padding:40px 20px;
     }
 
     /* VÍDEO DE FUNDO */
@@ -49,51 +53,66 @@
       position:absolute;
       top:0;
       left:0;
+
       width:100%;
       height:100%;
+
       object-fit:cover;
+
       z-index:0;
     }
 
-    /* overlay escuro */
+    /* OVERLAY */
     .hero::before{
       content:'';
       position:absolute;
       inset:0;
-      background:rgba(0,0,0,0.48);
+      background:rgba(0,0,0,0.50);
       z-index:1;
     }
 
     .content{
       position:relative;
       z-index:2;
+
       width:100%;
       max-width:520px;
+
       color:white;
     }
 
     h1{
       font-family:'Pinyon Script', cursive;
+
       font-size:105px;
       font-weight:400;
+
       text-align:center;
-      line-height:1;
+
+      line-height:0.95;
+
       white-space:nowrap;
     }
 
     .subtitle{
-      margin-top:22px;
+      margin-top:24px;
+
       text-align:center;
+
       font-size:18px;
       font-weight:300;
+
       line-height:1.7;
+
       color:rgba(255,255,255,0.95);
     }
 
     form{
       margin-top:42px;
+
       display:flex;
       flex-direction:column;
+
       gap:18px;
     }
 
@@ -104,24 +123,37 @@
 
     .input-group label{
       margin-bottom:10px;
-      font-size:13px;
+
+      font-size:12px;
       font-weight:500;
+
       letter-spacing:3px;
+
       color:#f3e2cf;
     }
 
     input{
       width:100%;
+
       height:64px;
+
       padding:0 24px;
+
       border-radius:22px;
+
       border:1px solid rgba(255,255,255,0.35);
+
       background:rgba(255,255,255,0.06);
+
       backdrop-filter:blur(10px);
       -webkit-backdrop-filter:blur(10px);
+
       color:white;
+
       font-size:16px;
+
       outline:none;
+
       transition:0.3s;
     }
 
@@ -135,17 +167,27 @@
     }
 
     button{
-      margin-top:8px;
-      width:190px;
-      height:54px;
+      margin-top:10px;
+
+      width:100%;
+
+      height:56px;
+
       border:none;
+
       border-radius:50px;
+
       background:#f3e2cf;
+
       color:black;
+
       font-size:13px;
       font-weight:600;
+
       letter-spacing:4px;
+
       cursor:pointer;
+
       transition:0.3s;
     }
 
@@ -153,24 +195,92 @@
       transform:translateY(-2px);
     }
 
+    /* ========================= */
+    /* RESPONSIVO TABLET */
+    /* ========================= */
+
     @media(max-width:768px){
 
+      .hero{
+        padding:30px 20px;
+      }
+
+      .content{
+        max-width:100%;
+      }
+
       h1{
-        font-size:68px;
+        font-size:72px;
+        white-space:normal;
       }
 
       .subtitle{
         font-size:16px;
+        line-height:1.6;
       }
 
       input{
         height:58px;
+        font-size:15px;
+        padding:0 20px;
       }
 
       button{
-        width:170px;
-        height:50px;
+        height:54px;
+        font-size:12px;
+        letter-spacing:3px;
       }
+
+    }
+
+    /* ========================= */
+    /* RESPONSIVO CELULAR */
+    /* ========================= */
+
+    @media(max-width:480px){
+
+      .hero{
+        min-height:100dvh;
+        padding:24px 18px;
+      }
+
+      h1{
+        font-size:56px;
+        line-height:0.95;
+      }
+
+      .subtitle{
+        margin-top:18px;
+        font-size:15px;
+      }
+
+      form{
+        margin-top:30px;
+        gap:14px;
+      }
+
+      .input-group label{
+        font-size:11px;
+        letter-spacing:2px;
+      }
+
+      input{
+        height:54px;
+        font-size:14px;
+
+        border-radius:18px;
+      }
+
+      button{
+        height:52px;
+
+        border-radius:50px;
+
+        font-size:11px;
+
+        letter-spacing:2px;
+      }
+
     }
 
   </style>
@@ -181,7 +291,7 @@
 
   <section class="hero">
 
-    <!-- 🔥 VÍDEO DE FUNDO -->
+    <!-- VÍDEO DE FUNDO -->
     <video class="bg-video" autoplay muted loop playsinline>
       <source src="./charyleter.mp4" type="video/mp4">
     </video>
