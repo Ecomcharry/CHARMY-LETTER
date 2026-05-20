@@ -107,15 +107,24 @@
       opacity:0.95;
     }
 
-    /* BOTÃO */
+    /* BOTÕES */
+
+    .buttons{
+      margin-top:35px;
+
+      display:flex;
+      gap:14px;
+
+      justify-content:center;
+
+      flex-wrap:wrap;
+    }
 
     .site-button{
 
       display:inline-flex;
       align-items:center;
       justify-content:center;
-
-      margin-top:35px;
 
       width:220px;
       height:56px;
@@ -140,6 +149,20 @@
       transform:translateY(-3px);
 
       background:white;
+    }
+
+    /* BOTÃO VOLTAR */
+
+    .restart-button{
+      background:transparent;
+
+      border:1px solid rgba(255,255,255,0.4);
+
+      color:white;
+    }
+
+    .restart-button:hover{
+      background:rgba(255,255,255,0.1);
     }
 
     /* ========================= */
@@ -176,7 +199,7 @@
       h1{
         font-size:64px;
 
-        white-space:normal;
+        white-space:nowrap;
 
         line-height:1;
       }
@@ -218,15 +241,19 @@
         line-height:1.6;
       }
 
+      .buttons{
+        margin-top:28px;
+      }
+
       .site-button{
-        width:180px;
+        width:100%;
+        max-width:220px;
+
         height:50px;
 
         font-size:11px;
 
         letter-spacing:2px;
-
-        margin-top:28px;
       }
 
     }
@@ -256,15 +283,28 @@
         Agora é só esperar… ele vai amar essa surpresa 🤍
       </p>
 
-      <!-- BOTÃO -->
+      <!-- BOTÕES -->
 
-      <a 
-        href="https://www.charry.com.br/collections/inverno-26"
-        class="site-button"
-        target="_blank"
-      >
-        ACESSE O SITE
-      </a>
+      <div class="buttons">
+
+        <a 
+          href="https://www.charry.com.br/collections/the-most-loved-edit"
+          class="site-button"
+          target="_blank"
+        >
+          ACESSE O SITE
+        </a>
+
+        <!-- BOTÃO RECOMEÇAR -->
+
+        <a 
+          href="index.html"
+          class="site-button restart-button"
+        >
+          ESCOLHER NOVAMENTE
+        </a>
+
+      </div>
 
     </div>
 
