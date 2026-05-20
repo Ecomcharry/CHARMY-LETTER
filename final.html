@@ -82,6 +82,40 @@
       opacity:0.95;
     }
 
+    /* BOTÃO */
+    .site-button{
+
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+
+      margin-top:35px;
+
+      width:220px;
+      height:56px;
+
+      background:#f3e2cf;
+
+      color:black;
+
+      text-decoration:none;
+
+      border-radius:50px;
+
+      font-size:13px;
+      font-weight:600;
+
+      letter-spacing:3px;
+
+      transition:0.3s;
+
+    }
+
+    .site-button:hover{
+      transform:translateY(-3px);
+      background:white;
+    }
+
     /* RESPONSIVO */
     @media(max-width:768px){
 
@@ -91,6 +125,11 @@
 
       p{
         font-size:15px;
+      }
+
+      .site-button{
+        width:190px;
+        height:52px;
       }
 
     }
@@ -113,11 +152,20 @@
       <h1>Charmy Letter</h1>
 
       <p>
-        Obrigada por participar <br><br>
+        Obrigada por participar ✨<br><br>
 
         Em alguns minutos, a sua dica de presente será enviada para o seu amor.<br>
         Agora é só esperar… ele vai amar essa surpresa 🤍
       </p>
+
+      <!-- BOTÃO -->
+      <a 
+        href="https://www.charry.com.br/collections/inverno-26"
+        class="site-button"
+        target="_blank"
+      >
+        ACESSE O SITE
+      </a>
 
     </div>
 
