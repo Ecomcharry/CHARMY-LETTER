@@ -28,6 +28,7 @@
       min-height:100vh;
       font-family:'Montserrat', sans-serif;
       overflow:hidden;
+      background:black;
     }
 
     /* HERO */
@@ -61,7 +62,7 @@
       z-index:0;
     }
 
-    /* MOBILE COMEÇA ESCONDIDO */
+    /* ESCONDE MOBILE NO DESKTOP */
 
     .mobile-video{
       display:none;
@@ -221,7 +222,6 @@
 
       h1{
         font-size:68px;
-
         white-space:normal;
       }
 
@@ -237,7 +237,6 @@
       button{
         width:100%;
         max-width:220px;
-
         height:52px;
       }
 
@@ -263,7 +262,7 @@
 
   <section class="hero">
 
-    <!-- VÍDEO DESKTOP -->
+    <!-- DESKTOP -->
     <video
       class="bg-video desktop-video"
       autoplay
@@ -273,10 +272,10 @@
       webkit-playsinline
       preload="auto"
     >
-      <source src="./charyleter.mp4" type="video/mp4">
+      <source src="charyleter.mp4" type="video/mp4">
     </video>
 
-    <!-- VÍDEO MOBILE -->
+    <!-- MOBILE -->
     <video
       class="bg-video mobile-video"
       autoplay
@@ -286,7 +285,7 @@
       webkit-playsinline
       preload="auto"
     >
-      <source src="./charry.mp4" type="video/mp4">
+      <source src="charry.mp4" type="video/mp4">
     </video>
 
     <div class="content">
@@ -333,6 +332,59 @@
     </div>
 
   </section>
+
+  <!-- SCRIPT AUTOPLAY IPHONE -->
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const videos = document.querySelectorAll("video");
+
+      videos.forEach((video) => {
+
+        video.muted = true;
+        video.defaultMuted = true;
+
+        const playVideo = () => {
+
+          const promise = video.play();
+
+          if (promise !== undefined) {
+
+            promise
+              .then(() => {
+
+                console.log("Vídeo rodando");
+
+              })
+              .catch(() => {
+
+                console.log("Autoplay bloqueado");
+
+              });
+
+          }
+
+        };
+
+        // tenta autoplay
+        playVideo();
+
+        // fallback iphone
+        document.addEventListener(
+          "touchstart",
+          () => {
+            playVideo();
+          },
+          { once:true }
+        );
+
+      });
+
+    });
+
+  </script>
 
 </body>
 
