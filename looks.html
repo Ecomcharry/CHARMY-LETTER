@@ -34,7 +34,7 @@
       font-size:14px;
     }
 
-    /* GRID MAIS ESPAÇADO */
+    /* GRID */
     .grid{
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -67,13 +67,13 @@
       background:rgba(255,255,255,0.12);
     }
 
-    /* IMAGEM QUADRADA */
+    /* IMAGEM NO TAMANHO ORIGINAL */
     .card img{
       width:100%;
 
-      aspect-ratio:1/1;
+      height:auto;
 
-      object-fit:cover;
+      object-fit:contain;
 
       display:block;
 
@@ -172,7 +172,9 @@ async function fetchProducts(cursor = null) {
   const hasNext = productsData?.pageInfo?.hasNextPage;
 
   if (hasNext) {
+
     const lastCursor = edges[edges.length - 1].cursor;
+
     return fetchProducts(lastCursor);
   }
 
@@ -192,6 +194,7 @@ function render(products) {
     const img = p?.images?.edges?.[0]?.node?.url || "";
 
     const card = document.createElement("div");
+
     card.className = "card";
 
     card.innerHTML = `
@@ -205,6 +208,7 @@ function render(products) {
     card.onclick = () => {
 
       localStorage.setItem("selectedLook", title);
+
       localStorage.setItem("selectedImage", img);
 
       localStorage.setItem(
@@ -224,6 +228,7 @@ async function init() {
   try {
 
     const products = await fetchProducts();
+
     render(products);
 
   } catch (err) {
