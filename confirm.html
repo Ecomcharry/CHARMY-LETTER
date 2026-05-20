@@ -297,13 +297,15 @@
 
 <script>
 
-  const name = localStorage.getItem("selectedLook");
-  const link = localStorage.getItem("selectedLink");
+const SCRIPT_URL = "COLE_AQUI_SUA_URL";
 
-  document.getElementById("productName").innerText =
-    name || "";
+const name = localStorage.getItem("selectedLook");
+const link = localStorage.getItem("selectedLink");
 
-  const autoMessage = `
+document.getElementById("productName").innerText =
+  name || "";
+
+const autoMessage = `
 Oii!
 
 Seu amor decidiu nos contar qual presente gostaria de ganhar nesse dia dos namorados e a gente veio facilitar sua vida ✨
@@ -316,37 +318,47 @@ ${link}
 Qualquer dúvida, estamos por aqui 🤍
 `;
 
-  document.getElementById("message").value = autoMessage;
+document.getElementById("message").value = autoMessage;
 
-  function sendForm(e){
+async function sendForm(e){
 
-    e.preventDefault();
+  e.preventDefault();
 
-    const data = {
+  const data = {
 
-      name: document.getElementById("name").value,
+    name: document.getElementById("name").value,
 
-      email: document.getElementById("email").value,
+    email: document.getElementById("email").value,
 
-      phone: document.getElementById("phone").value,
+    phone: document.getElementById("phone").value,
 
-      size: document.getElementById("size").value,
+    size: document.getElementById("size").value,
 
-      loverPhone: document.getElementById("loverPhone").value,
+    loverPhone: document.getElementById("loverPhone").value,
 
-      product: name,
+    product: name,
 
-      link: link
-    };
+    link: link
+  };
 
-    console.log("ENVIADO:", data);
+  try {
 
-    alert("Sua dica foi enviada ✨");
+    await fetch(SCRIPT_URL, {
+
+      method: "POST",
+
+      body: JSON.stringify(data)
+
+    });
 
     window.location.href = "final.html";
+
+  } catch(err){
+
+    alert("Erro ao enviar.");
+
+    console.log(err);
   }
+}
 
 </script>
-
-</body>
-</html>
