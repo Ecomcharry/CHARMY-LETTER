@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Escolha seu look</title>
+
+  <style>
+
+    body{
+      margin:0;
+      background:#5a0f1b;
+      font-family:Arial;
+      color:white;
+    }
+
+    .container{
+      padding:60px 40px;
+      max-width:1200px;
+      margin:auto;
+      text-align:center;
+    }
+
+    h1{
+      font-size:34px;
+      margin-bottom:10px;
+      color:white;
+    }
+
+    .subtitle{
+      opacity:0.8;
+      margin-bottom:40px;
+      font-size:14px;
+    }
+
+    /* 🔥 GRID MAIS ESPAÇADO */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:50px;
+      margin-top:30px;
+    }
+
+    /* 🔥 CARD FORÇADO QUADRADO */
+    .card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.12);
+
+      border-radius:0 !important;
+      overflow:hidden;
+
+      cursor:pointer;
+      transition:0.3s;
+
+      text-align:left;
+    }
+
+    /* 🔥 remove qualquer herança de arredondamento */
+    .card, .card *{
+      border-radius:0 !important;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      background:rgba(255,255,255,0.1);
+    }
+
+    /* 🔥 IMAGEM PERFEITAMENTE QUADRADA */
+    .card img{
+      width:100%;
+      aspect-ratio:1/1;
+      object-fit:cover;
+      display:block;
+      border-radius:0 !important;
+    }
+
+    .info{
+      padding:16px;
+    }
+
+    .info h3{
+      margin:0;
+      font-size:15px;
+      color:white;
+    }
+
+    .error{
+      margin-top:20px;
+      color:white;
+      font-size:14px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Escolha seu look favorito para receber como presente!</h1>
+
+    <p class="subtitle">
+      Clique no look que mais combina com você ✨
+    </p>
+
+    <div class="grid" id="product-grid"></div>
+
+    <div class="error" id="error"></div>
+
+  </div>
+
+<script>
+
+const API_URL = "https://use-charry.myshopify.com/api/2023-10/graphql.json";
+const TOKEN = "eaac1cfd8130a60c0be145a3a65684e6";
+
+async function loadProducts() {
+
+  const grid = document.getElementById("product-grid");
+  const errorBox = document.getElementById("error");
+
+  try {
+
+    const query = `
+    {
+      collection(handle: "inverno-26") {
+        products(first: 50) {
+          edges {
+            node {
+              title
+              handle
+              images(first: 1) {
+                edges {
+                  node {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }`;
+
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Shopify-Storefront-Access-Token": TOKEN
+      },
+      body: JSON.stringify({ query })
+    });
+
+    const data = await res.json();
+
+    console.log("SHOPIFY RESPONSE:", data);
+
+    const products = data?.data?.collection?.products?.edges;
+
+    if (!products || products.length === 0) {
+      errorBox.innerHTML = "Nenhum produto encontrado na coleção.";
+      return;
+    }
+
+    products.forEach((item) => {
+
+      const p = item.node;
+
+      const title = p?.title || "";
+      const handle = p?.handle || "";
+      const img = p?.images?.edges?.[0]?.node?.url || "";
+
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <img src="${img}" />
+        <div class="info">
+          <h3>${title}</h3>
+        </div>
+      `;
+
+      card.onclick = () => {
+
+        localStorage.setItem("selectedLook", title);
+        localStorage.setItem("selectedImage", img);
+        localStorage.setItem(
+          "selectedLink",
+          `https://www.charry.com.br/products/${handle}`
+        );
+
+        window.location.href = "confirm.html";
+      };
+
+      grid.appendChild(card);
+    });
+
+  } catch (err) {
+
+    console.error("ERRO SHOPIFY:", err);
+
+    errorBox.innerHTML =
+      "Erro ao carregar produtos. Verifique a API ou coleção.";
+  }
+}
+
+loadProducts();
+
+</script>
+
+</body>
+</html>

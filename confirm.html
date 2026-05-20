@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confirmar escolha</title>
+
+  <style>
+
+    body{
+      margin:0;
+      background:#5a0f1b;
+      font-family:Arial;
+      color:white;
+      display:flex;
+      justify-content:center;
+      padding:40px 20px;
+    }
+
+    .container{
+      max-width:500px;
+      width:100%;
+    }
+
+    h1{
+      font-size:22px;
+      margin-bottom:10px;
+    }
+
+    .subtitle{
+      opacity:0.85;
+      margin-bottom:25px;
+      font-size:14px;
+    }
+
+    label{
+      display:block;
+      margin:12px 0 6px;
+      font-size:13px;
+    }
+
+    input, select, textarea{
+      width:100%;
+      padding:12px;
+      border-radius:12px;
+      border:none;
+      outline:none;
+      font-size:14px;
+    }
+
+    textarea{
+      min-height:120px;
+      resize:none;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.06);
+      padding:15px;
+      border-radius:16px;
+      margin-bottom:20px;
+    }
+
+    button{
+      width:100%;
+      margin-top:20px;
+      padding:14px;
+      border:none;
+      border-radius:30px;
+      background:white;
+      color:#5a0f1b;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Gostou do produto?</h1>
+
+    <p class="subtitle">
+      A gente envia sua dica de presente para o seu amor ✨
+    </p>
+
+    <div class="card">
+      <p id="productName"></p>
+    </div>
+
+    <form onsubmit="sendForm(event)">
+
+      <label>Seu nome</label>
+      <input id="name" required>
+
+      <label>Seu e-mail</label>
+      <input id="email" type="email" required>
+
+      <label>Seu telefone</label>
+      <input id="phone" required>
+
+      <label>Tamanho</label>
+      <select id="size" required>
+        <option value="">Selecione</option>
+        <option>PP</option>
+        <option>P</option>
+        <option>M</option>
+        <option>G</option>
+        <option>GG</option>
+      </select>
+
+      <label>Telefone de quem vai presentear</label>
+      <input id="loverPhone" required>
+
+      <label>Mensagem para o seu amor</label>
+      <textarea id="message"></textarea>
+
+      <button type="submit">ENVIAR DICA</button>
+
+    </form>
+
+  </div>
+
+<script>
+
+  const name = localStorage.getItem("selectedLook");
+  const link = localStorage.getItem("selectedLink");
+
+  document.getElementById("productName").innerText =
+    name || "";
+
+  const autoMessage = `
+Oii!
+
+Seu amor decidiu nos contar qual presente gostaria de ganhar nesse dia dos namorados e a gente veio facilitar sua vida ✨
+
+Ela já escolheu o look perfeito pra esse momento especial e aqui está o link direto para você acertar em cheio:
+
+${name}
+${link}
+
+Qualquer dúvida, estamos por aqui 🤍
+`;
+
+  document.getElementById("message").value = autoMessage;
+
+  function sendForm(e){
+    e.preventDefault();
+
+    const data = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      phone: document.getElementById("phone").value,
+      size: document.getElementById("size").value,
+      loverPhone: document.getElementById("loverPhone").value,
+      product: name,
+      link: link
+    };
+
+    console.log("ENVIADO:", data);
+
+    alert("Sua dica foi enviada ✨");
+
+    window.location.href = "final.html";
+  }
+
+</script>
+
+</body>
+</html>
