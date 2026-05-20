@@ -47,11 +47,9 @@
       padding:20px;
     }
 
-    /* VÍDEO / IMAGEM */
+    /* VÍDEO */
 
-    .bg-video,
-    .iphone-image{
-
+    .bg-video{
       position:absolute;
       top:0;
       left:0;
@@ -62,12 +60,6 @@
       object-fit:cover;
 
       z-index:0;
-    }
-
-    /* IMAGEM IPHONE ESCONDIDA */
-
-    .iphone-image{
-      display:none;
     }
 
     /* OVERLAY */
@@ -268,13 +260,6 @@
       <source src="charry.mp4" type="video/mp4">
     </video>
 
-    <!-- IMAGEM IPHONE -->
-    <img
-      src="estatico.jpg"
-      class="iphone-image"
-      id="iphoneImage"
-    />
-
     <div class="content">
 
       <h1>Charmy Letter</h1>
@@ -322,17 +307,17 @@
 
   <script>
 
-    // DETECTA IPHONE
+    // FORÇA O PLAY NO IPHONE
 
-    const isiPhone = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const video = document.getElementById("mainVideo");
 
-    if(isiPhone){
+    video.play().catch(() => {
 
-      document.getElementById("mainVideo").style.display = "none";
+      document.addEventListener("touchstart", () => {
+        video.play();
+      }, { once: true });
 
-      document.getElementById("iphoneImage").style.display = "block";
-
-    }
+    });
 
   </script>
 
