@@ -47,9 +47,11 @@
       padding:20px;
     }
 
-    /* VÍDEOS */
+    /* VÍDEO */
 
-    .bg-video{
+    .bg-video,
+    .iphone-image{
+
       position:absolute;
       top:0;
       left:0;
@@ -62,9 +64,9 @@
       z-index:0;
     }
 
-    /* ESCONDE MOBILE NO DESKTOP */
+    /* IMAGEM IPHONE COMEÇA ESCONDIDA */
 
-    .mobile-video{
+    .iphone-image{
       display:none;
     }
 
@@ -240,18 +242,6 @@
         height:52px;
       }
 
-      /* ESCONDE DESKTOP */
-
-      .desktop-video{
-        display:none;
-      }
-
-      /* MOSTRA MOBILE */
-
-      .mobile-video{
-        display:block;
-      }
-
     }
 
   </style>
@@ -262,22 +252,10 @@
 
   <section class="hero">
 
-    <!-- DESKTOP -->
+    <!-- VÍDEO -->
     <video
-      class="bg-video desktop-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      webkit-playsinline
-      preload="auto"
-    >
-      <source src="charyleter.mp4" type="video/mp4">
-    </video>
-
-    <!-- MOBILE -->
-    <video
-      class="bg-video mobile-video"
+      id="mainVideo"
+      class="bg-video"
       autoplay
       muted
       loop
@@ -287,6 +265,13 @@
     >
       <source src="charry.mp4" type="video/mp4">
     </video>
+
+    <!-- IMAGEM IPHONE -->
+    <img
+      src="estatico.jpg"
+      class="iphone-image"
+      id="iphoneImage"
+    />
 
     <div class="content">
 
@@ -333,56 +318,19 @@
 
   </section>
 
-  <!-- SCRIPT AUTOPLAY IPHONE -->
-
   <script>
 
-    document.addEventListener("DOMContentLoaded", function () {
+    // DETECTA IPHONE / SAFARI
 
-      const videos = document.querySelectorAll("video");
+    const isiPhone = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-      videos.forEach((video) => {
+    if(isiPhone){
 
-        video.muted = true;
-        video.defaultMuted = true;
+      document.getElementById("mainVideo").style.display = "none";
 
-        const playVideo = () => {
+      document.getElementById("iphoneImage").style.display = "block";
 
-          const promise = video.play();
-
-          if (promise !== undefined) {
-
-            promise
-              .then(() => {
-
-                console.log("Vídeo rodando");
-
-              })
-              .catch(() => {
-
-                console.log("Autoplay bloqueado");
-
-              });
-
-          }
-
-        };
-
-        // tenta autoplay
-        playVideo();
-
-        // fallback iphone
-        document.addEventListener(
-          "touchstart",
-          () => {
-            playVideo();
-          },
-          { once:true }
-        );
-
-      });
-
-    });
+    }
 
   </script>
 
