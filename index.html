@@ -47,9 +47,11 @@
       padding:20px;
     }
 
-    /* VÍDEO */
+    /* VÍDEO / IMAGEM */
 
-    .bg-video{
+    .bg-video,
+    .iphone-image{
+
       position:absolute;
       top:0;
       left:0;
@@ -60,6 +62,12 @@
       object-fit:cover;
 
       z-index:0;
+    }
+
+    /* IMAGEM IPHONE ESCONDIDA */
+
+    .iphone-image{
+      display:none;
     }
 
     /* OVERLAY */
@@ -247,9 +255,23 @@
   <section class="hero">
 
     <!-- VÍDEO -->
-    <video autoplay muted loop playsinline class="bg-video">
+    <video
+      id="mainVideo"
+      class="bg-video"
+      autoplay
+      muted
+      loop
+      playsinline
+    >
       <source src="./charyleter.mp4" type="video/mp4">
     </video>
+
+    <!-- IMAGEM IPHONE -->
+    <img
+      src="estatico.jpg"
+      class="iphone-image"
+      id="iphoneImage"
+    />
 
     <div class="content">
 
@@ -295,6 +317,22 @@
     </div>
 
   </section>
+
+  <script>
+
+    // DETECTA IPHONE / IPAD
+
+    const isiPhone = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if(isiPhone){
+
+      document.getElementById("mainVideo").style.display = "none";
+
+      document.getElementById("iphoneImage").style.display = "block";
+
+    }
+
+  </script>
 
 </body>
 
