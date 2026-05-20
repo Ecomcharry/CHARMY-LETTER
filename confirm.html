@@ -348,6 +348,8 @@ async function sendForm(e){
 
       method: "POST",
 
+      mode: "no-cors",
+
       headers:{
         "Content-Type":"application/json"
       },
@@ -356,17 +358,19 @@ async function sendForm(e){
 
     });
 
-    const result = await response.text();
+    alert("Sua dica foi enviada ✨");
 
-    console.log(result);
+    setTimeout(() => {
 
-    window.location.href = "final.html";
+      window.location.href = "final.html";
+
+    }, 1000);
 
   } catch(err){
 
     console.log(err);
 
-    alert("Erro ao enviar formulário");
+    alert("Erro ao enviar");
   }
 }
 
