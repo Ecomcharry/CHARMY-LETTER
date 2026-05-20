@@ -297,7 +297,8 @@
 
 <script>
 
-const SCRIPT_URL = "COLE_AQUI_SUA_URL";
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbyhwUF5WdUPhb5dM0cOmrzGjiGvmEJVxzDwfDpyAnKu0b1Z8zM4PkSMZwviYjaNfPEw/exec";
 
 const name = localStorage.getItem("selectedLook");
 const link = localStorage.getItem("selectedLink");
@@ -343,21 +344,29 @@ async function sendForm(e){
 
   try {
 
-    await fetch(SCRIPT_URL, {
+    const response = await fetch(SCRIPT_URL, {
 
       method: "POST",
+
+      headers:{
+        "Content-Type":"application/json"
+      },
 
       body: JSON.stringify(data)
 
     });
 
+    const result = await response.text();
+
+    console.log(result);
+
     window.location.href = "final.html";
 
   } catch(err){
 
-    alert("Erro ao enviar.");
-
     console.log(err);
+
+    alert("Erro ao enviar formulário");
   }
 }
 
