@@ -247,17 +247,8 @@
   <section class="hero">
 
     <!-- VÍDEO -->
-    <video
-      id="mainVideo"
-      class="bg-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      webkit-playsinline
-      preload="auto"
-    >
-      <source src="charry.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="./charyleter.mp4" type="video/mp4">
     </video>
 
     <div class="content">
@@ -304,22 +295,6 @@
     </div>
 
   </section>
-
-  <script>
-
-    // FORÇA O PLAY NO IPHONE
-
-    const video = document.getElementById("mainVideo");
-
-    video.play().catch(() => {
-
-      document.addEventListener("touchstart", () => {
-        video.play();
-      }, { once: true });
-
-    });
-
-  </script>
 
 </body>
 
