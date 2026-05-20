@@ -44,30 +44,28 @@
       padding:40px 20px;
     }
 
-    /* VÍDEO DE FUNDO */
-
-    .hero video{
+    /* VÍDEO E IMAGEM */
+    .hero video,
+    .hero img{
       position:absolute;
-
       top:0;
       left:0;
-
       width:100%;
       height:100%;
-
       object-fit:cover;
     }
 
-    /* OVERLAY ESCURO */
+    /* IMAGEM ESCONDIDA POR PADRÃO */
+    .iphone-image{
+      display:none;
+    }
 
+    /* OVERLAY ESCURO */
     .hero::before{
       content:'';
-
       position:absolute;
       inset:0;
-
       background:rgba(0,0,0,0.55);
-
       z-index:1;
     }
 
@@ -79,38 +77,27 @@
       max-width:700px;
 
       text-align:center;
-
       color:white;
-
       padding:20px;
     }
 
     h1{
       font-family:'Pinyon Script', cursive;
-
       font-size:100px;
       font-weight:400;
-
       line-height:1.1;
-
       white-space:nowrap;
     }
 
     p{
       margin-top:20px;
-
       font-size:16px;
       font-weight:300;
-
       line-height:1.8;
-
       opacity:0.95;
     }
 
-    /* BOTÃO */
-
     .site-button{
-
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -121,16 +108,13 @@
       height:56px;
 
       background:#f3e2cf;
-
       color:black;
 
       text-decoration:none;
-
       border-radius:50px;
 
       font-size:13px;
       font-weight:600;
-
       letter-spacing:3px;
 
       transition:0.3s;
@@ -138,97 +122,54 @@
 
     .site-button:hover{
       transform:translateY(-3px);
-
       background:white;
     }
 
-    /* ========================= */
     /* TABLET */
-    /* ========================= */
-
     @media(max-width:1024px){
-
-      h1{
-        font-size:82px;
-      }
-
-      p{
-        font-size:15px;
-      }
-
+      h1{ font-size:82px; }
+      p{ font-size:15px; }
     }
 
-    /* ========================= */
     /* MOBILE */
-    /* ========================= */
-
     @media(max-width:768px){
-
-      .hero{
-        padding:30px 18px;
-      }
-
-      .content{
-        max-width:100%;
-        padding:10px;
-      }
+      .hero{ padding:30px 18px; }
 
       h1{
         font-size:64px;
-
         white-space:normal;
-
         line-height:1;
       }
 
       p{
         font-size:15px;
-
         line-height:1.7;
       }
 
       .site-button{
         width:190px;
         height:52px;
-
         font-size:12px;
-
         letter-spacing:2px;
       }
-
     }
 
-    /* ========================= */
     /* CELULAR PEQUENO */
-    /* ========================= */
-
     @media(max-width:480px){
-
-      .hero{
-        padding:25px 16px;
-      }
-
-      h1{
-        font-size:52px;
-      }
+      h1{ font-size:52px; }
 
       p{
         font-size:14px;
-
         line-height:1.6;
       }
 
       .site-button{
         width:180px;
         height:50px;
-
         font-size:11px;
-
         letter-spacing:2px;
-
         margin-top:28px;
       }
-
     }
 
   </style>
@@ -239,11 +180,13 @@
 
   <section class="hero">
 
-    <!-- VÍDEO DE FUNDO -->
-
-    <video autoplay muted loop playsinline>
+    <!-- VÍDEO (ANDROID / PADRÃO) -->
+    <video autoplay muted loop playsinline id="mainVideo">
       <source src="./charyleter.mp4" type="video/mp4">
     </video>
+
+    <!-- IMAGEM (IPHONE) -->
+    <img src="estatico.jpg" class="iphone-image" id="iphoneImage">
 
     <div class="content">
 
@@ -256,8 +199,6 @@
         Agora é só esperar… ele vai amar essa surpresa 🤍
       </p>
 
-      <!-- BOTÃO -->
-
       <a 
         href="https://www.charry.com.br/collections/inverno-26"
         class="site-button"
@@ -269,6 +210,17 @@
     </div>
 
   </section>
+
+  <script>
+
+    const isiPhone = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (isiPhone) {
+      document.getElementById("mainVideo").style.display = "none";
+      document.getElementById("iphoneImage").style.display = "block";
+    }
+
+  </script>
 
 </body>
 
