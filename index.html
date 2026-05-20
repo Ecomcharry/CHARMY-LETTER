@@ -23,21 +23,19 @@
       box-sizing:border-box;
     }
 
-    html, body{
-      width:100%;
-      min-height:100%;
-      font-family:'Montserrat', sans-serif;
-      overflow-x:hidden;
-    }
-
     body{
-      background:black;
+      width:100%;
+      min-height:100vh;
+      font-family:'Montserrat', sans-serif;
+      overflow:hidden;
     }
 
     /* HERO */
+
     .hero{
       width:100%;
       min-height:100vh;
+
       position:relative;
       overflow:hidden;
 
@@ -45,10 +43,11 @@
       align-items:center;
       justify-content:center;
 
-      padding:40px 20px;
+      padding:20px;
     }
 
-    /* VÍDEO DE FUNDO */
+    /* VÍDEOS */
+
     .bg-video{
       position:absolute;
       top:0;
@@ -62,14 +61,26 @@
       z-index:0;
     }
 
+    /* MOBILE COMEÇA ESCONDIDO */
+
+    .mobile-video{
+      display:none;
+    }
+
     /* OVERLAY */
+
     .hero::before{
       content:'';
+
       position:absolute;
       inset:0;
+
       background:rgba(0,0,0,0.50);
+
       z-index:1;
     }
+
+    /* CONTEÚDO */
 
     .content{
       position:relative;
@@ -79,6 +90,8 @@
       max-width:520px;
 
       color:white;
+
+      text-align:center;
     }
 
     h1{
@@ -87,17 +100,13 @@
       font-size:105px;
       font-weight:400;
 
-      text-align:center;
-
-      line-height:0.95;
+      line-height:1;
 
       white-space:nowrap;
     }
 
     .subtitle{
-      margin-top:24px;
-
-      text-align:center;
+      margin-top:22px;
 
       font-size:18px;
       font-weight:300;
@@ -119,12 +128,14 @@
     .input-group{
       display:flex;
       flex-direction:column;
+
+      text-align:left;
     }
 
     .input-group label{
       margin-bottom:10px;
 
-      font-size:12px;
+      font-size:13px;
       font-weight:500;
 
       letter-spacing:3px;
@@ -167,11 +178,10 @@
     }
 
     button{
-      margin-top:10px;
+      margin-top:8px;
 
-      width:100%;
-
-      height:56px;
+      width:190px;
+      height:54px;
 
       border:none;
 
@@ -189,96 +199,58 @@
       cursor:pointer;
 
       transition:0.3s;
+
+      align-self:center;
     }
 
     button:hover{
       transform:translateY(-2px);
     }
 
-    /* ========================= */
-    /* RESPONSIVO TABLET */
-    /* ========================= */
+    /* RESPONSIVO */
 
     @media(max-width:768px){
+
+      body{
+        overflow:auto;
+      }
 
       .hero{
         padding:30px 20px;
       }
 
-      .content{
-        max-width:100%;
-      }
-
       h1{
-        font-size:72px;
+        font-size:68px;
+
         white-space:normal;
       }
 
       .subtitle{
         font-size:16px;
-        line-height:1.6;
       }
 
       input{
         height:58px;
         font-size:15px;
-        padding:0 20px;
       }
 
       button{
-        height:54px;
-        font-size:12px;
-        letter-spacing:3px;
-      }
+        width:100%;
+        max-width:220px;
 
-    }
-
-    /* ========================= */
-    /* RESPONSIVO CELULAR */
-    /* ========================= */
-
-    @media(max-width:480px){
-
-      .hero{
-        min-height:100dvh;
-        padding:24px 18px;
-      }
-
-      h1{
-        font-size:56px;
-        line-height:0.95;
-      }
-
-      .subtitle{
-        margin-top:18px;
-        font-size:15px;
-      }
-
-      form{
-        margin-top:30px;
-        gap:14px;
-      }
-
-      .input-group label{
-        font-size:11px;
-        letter-spacing:2px;
-      }
-
-      input{
-        height:54px;
-        font-size:14px;
-
-        border-radius:18px;
-      }
-
-      button{
         height:52px;
+      }
 
-        border-radius:50px;
+      /* ESCONDE DESKTOP */
 
-        font-size:11px;
+      .desktop-video{
+        display:none;
+      }
 
-        letter-spacing:2px;
+      /* MOSTRA MOBILE */
+
+      .mobile-video{
+        display:block;
       }
 
     }
@@ -291,9 +263,30 @@
 
   <section class="hero">
 
-    <!-- VÍDEO DE FUNDO -->
-    <video class="bg-video" autoplay muted loop playsinline>
+    <!-- VÍDEO DESKTOP -->
+    <video
+      class="bg-video desktop-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      webkit-playsinline
+      preload="auto"
+    >
       <source src="./charyleter.mp4" type="video/mp4">
+    </video>
+
+    <!-- VÍDEO MOBILE -->
+    <video
+      class="bg-video mobile-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      webkit-playsinline
+      preload="auto"
+    >
+      <source src="./charry.mp4" type="video/mp4">
     </video>
 
     <div class="content">
