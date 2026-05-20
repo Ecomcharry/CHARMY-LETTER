@@ -11,9 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
 
@@ -26,32 +24,29 @@
     body{
       width:100%;
       min-height:100vh;
-      font-family:'Montserrat', sans-serif;
       overflow:hidden;
+      font-family:'Montserrat', sans-serif;
       background:black;
     }
-
-    /* HERO */
 
     .hero{
       width:100%;
       min-height:100vh;
 
       position:relative;
-      overflow:hidden;
 
       display:flex;
       align-items:center;
       justify-content:center;
 
       padding:20px;
+
+      overflow:hidden;
     }
 
-    /* VÍDEO / IMAGEM */
+    /* VÍDEO */
 
-    .bg-video,
-    .iphone-image{
-
+    .bg-video{
       position:absolute;
       top:0;
       left:0;
@@ -64,9 +59,20 @@
       z-index:0;
     }
 
-    /* IMAGEM IPHONE ESCONDIDA */
+    /* IMAGEM IPHONE */
 
     .iphone-image{
+      position:absolute;
+      top:0;
+      left:0;
+
+      width:100%;
+      height:100%;
+
+      object-fit:cover;
+
+      z-index:0;
+
       display:none;
     }
 
@@ -78,7 +84,7 @@
       position:absolute;
       inset:0;
 
-      background:rgba(0,0,0,0.50);
+      background:rgba(0,0,0,0.55);
 
       z-index:1;
     }
@@ -89,18 +95,19 @@
       position:relative;
       z-index:2;
 
-      width:100%;
-      max-width:520px;
+      text-align:center;
 
       color:white;
 
-      text-align:center;
+      max-width:650px;
+
+      padding:20px;
     }
 
     h1{
       font-family:'Pinyon Script', cursive;
 
-      font-size:105px;
+      font-size:100px;
       font-weight:400;
 
       line-height:1;
@@ -108,106 +115,50 @@
       white-space:nowrap;
     }
 
-    .subtitle{
-      margin-top:22px;
+    p{
+      margin-top:20px;
 
-      font-size:18px;
+      font-size:16px;
       font-weight:300;
 
       line-height:1.7;
 
-      color:rgba(255,255,255,0.95);
+      opacity:0.95;
     }
 
-    form{
-      margin-top:42px;
+    /* BOTÃO */
 
-      display:flex;
-      flex-direction:column;
+    .site-button{
 
-      gap:18px;
-    }
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
 
-    .input-group{
-      display:flex;
-      flex-direction:column;
+      margin-top:35px;
 
-      text-align:left;
-    }
-
-    .input-group label{
-      margin-bottom:10px;
-
-      font-size:13px;
-      font-weight:500;
-
-      letter-spacing:3px;
-
-      color:#f3e2cf;
-    }
-
-    input{
-      width:100%;
-
-      height:64px;
-
-      padding:0 24px;
-
-      border-radius:22px;
-
-      border:1px solid rgba(255,255,255,0.35);
-
-      background:rgba(255,255,255,0.06);
-
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-
-      color:white;
-
-      font-size:16px;
-
-      outline:none;
-
-      transition:0.3s;
-    }
-
-    input::placeholder{
-      color:rgba(255,255,255,0.6);
-    }
-
-    input:focus{
-      border:1px solid #f3e2cf;
-      background:rgba(255,255,255,0.1);
-    }
-
-    button{
-      margin-top:8px;
-
-      width:190px;
-      height:54px;
-
-      border:none;
-
-      border-radius:50px;
+      width:220px;
+      height:56px;
 
       background:#f3e2cf;
 
       color:black;
 
+      text-decoration:none;
+
+      border-radius:50px;
+
       font-size:13px;
       font-weight:600;
 
-      letter-spacing:4px;
-
-      cursor:pointer;
+      letter-spacing:3px;
 
       transition:0.3s;
 
-      align-self:center;
     }
 
-    button:hover{
-      transform:translateY(-2px);
+    .site-button:hover{
+      transform:translateY(-3px);
+      background:white;
     }
 
     /* RESPONSIVO */
@@ -219,7 +170,7 @@
       }
 
       .hero{
-        padding:30px 20px;
+        padding:40px 20px;
       }
 
       h1{
@@ -228,20 +179,18 @@
         white-space:nowrap;
       }
 
-      .subtitle{
-        font-size:16px;
-      }
-
-      input{
-        height:58px;
+      p{
         font-size:15px;
+        line-height:1.6;
       }
 
-      button{
+      .site-button{
         width:100%;
-        max-width:220px;
+        max-width:240px;
 
         height:52px;
+
+        font-size:12px;
       }
 
     }
@@ -268,7 +217,7 @@
       <source src="charry.mp4" type="video/mp4">
     </video>
 
-    <!-- IMAGEM IPHONE -->
+    <!-- IMAGEM ESTÁTICA -->
     <img
       src="estatico.jpg"
       class="iphone-image"
@@ -279,42 +228,20 @@
 
       <h1>Charmy Letter</h1>
 
-      <p class="subtitle">
-        Você escolhe o look dos sonhos…<br>
-        e o seu amor recebe o recado
+      <p>
+        Obrigada por participar ✨<br><br>
+
+        Em alguns minutos, a sua dica de presente será enviada para o seu amor.<br>
+        Agora é só esperar… ele vai amar essa surpresa 🤍
       </p>
 
-      <form action="looks.html">
-
-        <div class="input-group">
-
-          <label>SEU E-MAIL</label>
-
-          <input
-            type="email"
-            placeholder="Digite seu e-mail"
-            required
-          >
-
-        </div>
-
-        <div class="input-group">
-
-          <label>SEU TELEFONE</label>
-
-          <input
-            type="tel"
-            placeholder="(00) 00000-0000"
-            required
-          >
-
-        </div>
-
-        <button type="submit">
-          CONTINUAR
-        </button>
-
-      </form>
+      <a
+        href="https://www.charry.com.br/collections/inverno-26"
+        class="site-button"
+        target="_blank"
+      >
+        ACESSE O SITE
+      </a>
 
     </div>
 
@@ -322,7 +249,7 @@
 
   <script>
 
-    // DETECTA IPHONE
+    // DETECTA IPHONE/IPAD
 
     const isiPhone = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
