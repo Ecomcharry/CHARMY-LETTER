@@ -11,7 +11,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
 
   <style>
 
@@ -21,35 +23,35 @@
       box-sizing:border-box;
     }
 
-    html, body{
-      width:100%;
-      overflow-x:hidden;
-    }
-
     body{
+      width:100%;
       min-height:100vh;
       font-family:'Montserrat', sans-serif;
+      overflow:hidden;
       background:black;
     }
+
+    /* HERO */
 
     .hero{
       width:100%;
       min-height:100vh;
 
       position:relative;
+      overflow:hidden;
 
       display:flex;
       align-items:center;
       justify-content:center;
 
       padding:20px;
-
-      overflow:hidden;
     }
 
-    /* VÍDEO */
+    /* VÍDEO / IMAGEM */
 
-    .bg-video{
+    .bg-video,
+    .iphone-image{
+
       position:absolute;
       top:0;
       left:0;
@@ -62,20 +64,9 @@
       z-index:0;
     }
 
-    /* IMAGEM IPHONE */
+    /* IMAGEM IPHONE ESCONDIDA */
 
     .iphone-image{
-      position:absolute;
-      top:0;
-      left:0;
-
-      width:100%;
-      height:100%;
-
-      object-fit:cover;
-
-      z-index:0;
-
       display:none;
     }
 
@@ -102,6 +93,8 @@
       max-width:520px;
 
       color:white;
+
+      text-align:center;
     }
 
     h1{
@@ -110,8 +103,6 @@
       font-size:105px;
       font-weight:400;
 
-      text-align:center;
-
       line-height:1;
 
       white-space:nowrap;
@@ -119,8 +110,6 @@
 
     .subtitle{
       margin-top:22px;
-
-      text-align:center;
 
       font-size:18px;
       font-weight:300;
@@ -142,6 +131,8 @@
     .input-group{
       display:flex;
       flex-direction:column;
+
+      text-align:left;
     }
 
     .input-group label{
@@ -186,7 +177,6 @@
 
     input:focus{
       border:1px solid #f3e2cf;
-
       background:rgba(255,255,255,0.1);
     }
 
@@ -212,6 +202,8 @@
       cursor:pointer;
 
       transition:0.3s;
+
+      align-self:center;
     }
 
     button:hover{
@@ -227,24 +219,21 @@
       }
 
       .hero{
-        padding:40px 20px;
+        padding:30px 20px;
       }
 
       h1{
-        font-size:58px;
+        font-size:52px;
 
         white-space:nowrap;
       }
 
       .subtitle{
-        font-size:15px;
-
-        line-height:1.6;
+        font-size:16px;
       }
 
       input{
         height:58px;
-
         font-size:15px;
       }
 
@@ -253,20 +242,6 @@
         max-width:220px;
 
         height:52px;
-
-        font-size:12px;
-      }
-
-    }
-
-    @media(max-width:480px){
-
-      h1{
-        font-size:48px;
-      }
-
-      .subtitle{
-        font-size:14px;
       }
 
     }
@@ -347,7 +322,7 @@
 
   <script>
 
-    // DETECTA IPHONE/IPAD
+    // DETECTA IPHONE
 
     const isiPhone = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
